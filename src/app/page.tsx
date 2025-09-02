@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ChevronRightIcon } from 'lucide-react';
+import { ChevronRightIcon, BriefcaseIcon } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { Card } from '@/components/Card';
 import { Container } from '@/components/Containet';
@@ -66,8 +66,88 @@ export default function Home() {
     );
   }
 
+  interface Role {
+    company: string;
+    title: string;
+    start: string | { label: string; dateTime: string };
+    end: string | { label: string; dateTime: string };
+  }
+
+  function Role({ role }: { role: Role }) {
+    const startLabel =
+      typeof role.start === 'string' ? role.start : role.start.label;
+    const startDate =
+      typeof role.start === 'string' ? role.start : role.start.dateTime;
+
+    const endLabel = typeof role.end === 'string' ? role.end : role.end.label;
+    const endDate = typeof role.end === 'string' ? role.end : role.end.dateTime;
+
+    return (
+      <li className="flex gap-4">
+        <dl className="flex flex-auto flex-wrap gap-x-2">
+          <dt className="sr-only">Company</dt>
+          <dd className="w-full flex-none text-sm font-medium text-zinc-900 dark:text-zinc-100">
+            {role.company}
+          </dd>
+          <dt className="sr-only">Role</dt>
+          <dd className="text-xs text-zinc-500 dark:text-zinc-400">
+            {role.title}
+          </dd>
+          <dt className="sr-only">Date</dt>
+          <dd
+            className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
+            aria-label={`${startLabel} until ${endLabel}`}>
+            <time dateTime={startDate}>{startLabel}</time>{' '}
+            <span aria-hidden="true">—</span>{' '}
+            <time dateTime={endDate}>{endLabel}</time>
+          </dd>
+        </dl>
+      </li>
+    );
+  }
+
+  function Resume() {
+    const resume: Array<Role> = [
+      {
+        company: 'Witswatersrand AI Lab',
+        title: 'AI Agent Developer',
+        start: '2024',
+        end: {
+          label: '2025',
+          dateTime: new Date().getFullYear().toString(),
+        },
+      },
+      {
+        company: 'Collaborative Projects',
+        title: 'Frontend Developer',
+        start: '2024',
+        end: 'present',
+      },
+      {
+        company: 'Academic Tutor',
+        title: 'Mathematics & Language Tutor',
+        start: '2021',
+        end: '2022',
+      },
+    ];
+
+    return (
+      <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
+        <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
+          <BriefcaseIcon className="h-6 w-6 flex-none" />
+          <span className="ml-3">Work</span>
+        </h2>
+        <ol className="mt-6 space-y-4">
+          {resume.map((role, roleIndex) => (
+            <Role key={roleIndex} role={role} />
+          ))}
+        </ol>
+      </div>
+    );
+  }
+
   return (
-    <Container>
+    <Container className="mt-24 md:mt-28">
       <div className="mx-auto mb-20 grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
         <div className="flex flex-col gap-16">
           <ToolsSection title="About">
@@ -81,7 +161,7 @@ export default function Home() {
               </p>
             </Tool>
           </ToolsSection>
-          <ToolsSection title="projects">
+          <ToolsSection title="Projects">
             <ul role="list" className="flex flex-col gap-16">
               {projects.map((project) => (
                 <Card as="li" key={project.name}>
@@ -114,6 +194,9 @@ export default function Home() {
               </a>
             </Tool>
           </ToolsSection>
+        </div>
+        <div className="space-y-10 lg:pl-16 xl:pl-24">
+          <Resume />
         </div>
       </div>
     </Container>
