@@ -5,7 +5,6 @@ import { useEffect, useState } from 'react';
 import { useTheme } from 'next-themes';
 import { Container } from './Containet';
 import { usePathname } from 'next/navigation';
-import { ExternalLink } from 'lucide-react';
 
 function GitHubIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
