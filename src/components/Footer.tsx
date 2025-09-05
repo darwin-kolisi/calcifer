@@ -1,6 +1,5 @@
 import { ContainerInner, ContainerOuter } from './Containet';
 import Link from 'next/link';
-import { ExternalLink } from 'lucide-react';
 
 function NavLink({
   href,
@@ -18,7 +17,6 @@ function NavLink({
       rel={isExternal ? 'noopener noreferrer' : undefined}
       className="transition hover:text-sky-700 dark:hover:text-sky-600">
       {children}
-      {isExternal && <ExternalLink className="mb-1 ml-1 inline w-3" />}
     </Link>
   );
 }

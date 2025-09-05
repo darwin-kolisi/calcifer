@@ -3,6 +3,8 @@ import { ChevronRightIcon, BriefcaseIcon } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { Card } from '@/components/Card';
 import { Container } from '@/components/Containet';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 export default function Home() {
   function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -148,6 +150,7 @@ export default function Home() {
 
   return (
     <Container className="mt-24 md:mt-28">
+      <Header />
       <div className="mx-auto mb-20 grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
         <div className="flex flex-col gap-16">
           <ToolsSection title="About">
@@ -199,6 +202,7 @@ export default function Home() {
           <Resume />
         </div>
       </div>
+      <Footer />
     </Container>
   );
 }
