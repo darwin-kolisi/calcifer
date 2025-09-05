@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
-import './globals.css';
+import '@/styles/tailwind.css';
 import { Layout } from '@/components/Layout';
+import { Providers } from './providers';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,9 +16,11 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full antialiased" suppressHydrationWarning>
       <body className="flex h-full bg-zinc-50 dark:bg-black">
-        <div className="flex w-full">
-          <Layout>{children}</Layout>
-        </div>
+        <Providers>
+          <div className="flex w-full">
+            <Layout>{children}</Layout>
+          </div>
+        </Providers>
       </body>
     </html>
   );
