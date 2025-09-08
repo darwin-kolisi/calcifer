@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { useEffect, useState, Fragment } from 'react';
+import { useEffect, useState, Fragment, useRef } from 'react';
 import { useTheme } from 'next-themes';
 import { Container } from './Containet';
 import { usePathname } from 'next/navigation';
@@ -96,6 +96,7 @@ function MobileNavItem({
   children: React.ReactNode;
   isExternal?: boolean;
 }) {
+  const isActive = usePathname() === href;
   return (
     <li>
       <Popover.Button
@@ -103,7 +104,12 @@ function MobileNavItem({
         target={isExternal ? '_blank' : undefined}
         rel={isExternal ? 'noopener noreferrer' : undefined}
         href={href}
-        className="block py-2">
+        className={clsx(
+          'block py-2',
+          isActive
+            ? 'text-sky-700 dark:text-sky-600'
+            : 'hover:text-sky-700 dark:hover:text-sky-600'
+        )}>
         {children}
       </Popover.Button>
     </li>
@@ -237,33 +243,51 @@ function ThemeToggle() {
     <button
       type="button"
       aria-label={mounted ? `Switch to ${otherTheme} theme` : 'Toggle theme'}
-      className="group rounded-full bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
+      className="group rounded-2xl bg-white/90 px-3 py-2 shadow-lg shadow-zinc-800/5 ring-1 ring-zinc-900/5 backdrop-blur transition dark:bg-zinc-800/90 dark:ring-white/10 dark:hover:ring-white/20"
       onClick={() => setTheme(otherTheme)}>
-      <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-teal-50 [@media(prefers-color-scheme:dark)]:stroke-teal-500 [@media(prefers-color-scheme:dark)]:group-hover:fill-teal-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-teal-600" />
-      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-teal-400/10 [@media_not_(prefers-color-scheme:dark)]:stroke-teal-500" />
+      <SunIcon className="h-6 w-6 fill-zinc-100 stroke-zinc-500 transition group-hover:fill-zinc-200 group-hover:stroke-zinc-700 dark:hidden [@media(prefers-color-scheme:dark)]:fill-sky-50 [@media(prefers-color-scheme:dark)]:stroke-sky-700 [@media(prefers-color-scheme:dark)]:group-hover:fill-sky-50 [@media(prefers-color-scheme:dark)]:group-hover:stroke-sky-800" />
+      <MoonIcon className="hidden h-6 w-6 fill-zinc-700 stroke-zinc-500 transition dark:block [@media(prefers-color-scheme:dark)]:group-hover:stroke-zinc-400 [@media_not_(prefers-color-scheme:dark)]:fill-sky-600/10 [@media_not_(prefers-color-scheme:dark)]:stroke-sky-700" />
     </button>
   );
 }
 
 export default function Header() {
+  const headerRef = useRef<React.ElementRef<'div'>>(null);
   return (
-    <Container
-      className="top-[var(--header-top,theme(spacing.6))] w-full mb-20"
-      style={{
-        position:
-          'var(--header-inner-position)' as React.CSSProperties['position'],
-      }}>
-      <div className="relative flex gap-4">
-        <div className="flex flex-1 justify-end md:justify-center">
-          <MobileNavigation className="pointer-events-auto md:hidden" />
-          <DesktopNavigation className="pointer-events-auto hidden md:block" />
+    <>
+      <header
+        className="pointer-events-none relative z-50 flex flex-none flex-col"
+        style={{
+          height: 'var(--header-height)',
+          marginBottom: 'var(--header-mb)',
+        }}>
+        <div
+          ref={headerRef}
+          className="top-0 z-10 h-16 pt-6"
+          style={{
+            position:
+              'var(--header-position)' as React.CSSProperties['position'],
+          }}>
+          <Container
+            className="top-[var(--header-top,theme(spacing.6))] w-full mb-20"
+            style={{
+              position:
+                'var(--header-inner-position)' as React.CSSProperties['position'],
+            }}>
+            <div className="relative flex gap-4">
+              <div className="flex flex-1 justify-end md:justify-center">
+                <MobileNavigation className="pointer-events-auto md:hidden" />
+                <DesktopNavigation className="pointer-events-auto hidden md:block" />
+              </div>
+              <div className="flex justify-end md:flex-1">
+                <div className="pointer-events-auto">
+                  <ThemeToggle />
+                </div>
+              </div>
+            </div>
+          </Container>
         </div>
-        <div className="flex justify-end md:flex-1">
-          <div className="pointer-events-auto">
-            <ThemeToggle />
-          </div>
-        </div>
-      </div>
-    </Container>
+      </header>
+    </>
   );
 }
