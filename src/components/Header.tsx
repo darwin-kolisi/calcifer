@@ -3,7 +3,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import { useEffect, useState, Fragment, useRef } from 'react';
 import { useTheme } from 'next-themes';
-import { Container } from './Containet';
+import { Container } from './Container';
 import { usePathname } from 'next/navigation';
 import { Popover, Transition } from '@headlessui/react';
 

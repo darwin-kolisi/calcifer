@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { ChevronRightIcon, BriefcaseIcon } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { Card } from '@/components/Card';
-import { Container } from '@/components/Containet';
+import { Container } from '@/components/Container';
 
 export default function Home() {
   function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
