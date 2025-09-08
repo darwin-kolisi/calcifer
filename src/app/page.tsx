@@ -162,26 +162,26 @@ export default function Home() {
             </Tool>
           </ToolsSection>
           <ToolsSection title="Projects">
-            <ul role="list" className="flex flex-col gap-16">
+            <div className="space-y-8">
               {projects.map((project) => (
-                <Card as="li" key={project.name}>
-                  <h2 className="mt-2 text-base font-semibold text-zinc-800 dark:text-zinc-100">
+                <Card as="div" key={project.name}>
+                  <h2 className="text-sm font-semibold text-zinc-800 dark:text-zinc-100">
                     <Card.Link href={project.link.href}>
                       {project.name}
                     </Card.Link>
                   </h2>
                   <Card.Description>{project.description}</Card.Description>
-                  <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-teal-500 dark:text-zinc-200">
+                  <p className="relative z-10 mt-6 flex text-sm font-medium text-zinc-400 transition group-hover:text-sky-700 dark:text-zinc-200">
                     <LinkIcon className="h-6 w-6 flex-none" />
                     <span className="ml-2">{project.link.label}</span>
                   </p>
                 </Card>
               ))}
-            </ul>
+            </div>
             <Link href="http://github.com">
               <div
                 aria-hidden="true"
-                className="tex- relative z-10 mt-16  flex items-center text-sm font-semibold text-teal-500">
+                className="relative z-10 mt-8 flex items-center text-sm font-semibold text-sky-700">
                 View more on GitHub
                 <ChevronRightIcon className="ml-1 h-4 w-4 stroke-current" />
               </div>
@@ -189,7 +189,9 @@ export default function Home() {
           </ToolsSection>
           <ToolsSection title="Contact">
             <Tool>
-              <a href="mailto:" className="font-semibold text-teal-500">
+              <a
+                href="mailto:"
+                className="mt-2 text-sm font-semibold text-sky-700">
                 calcifer@email.me
               </a>
             </Tool>
