@@ -1,4 +1,4 @@
-import { ContainerInner, ContainerOuter } from './Containet';
+import { ContainerInner, ContainerOuter } from './Container';
 import Link from 'next/link';
 
 function NavLink({
