@@ -18,17 +18,18 @@ export default function Home() {
 
   const projects = [
     {
-      name: 'bucket',
-      description: 'A web app I am building at work',
+      name: 'Bucket',
+      description: 'A personal web app for organizing and managing collections',
       link: {
-        href: 'http://github.com',
-        label: 'github.com',
+        href: 'https://bucket-zzro.onrender.com/',
+        label: 'bucket-zzro.onrender.com',
       },
     },
     {
-      name: 'neural networks',
-      description: 'Playing around with ML models and seeing what happens',
-      link: { href: 'http://github.com', label: 'github.com' },
+      name: 'Artificial Neural Network',
+      description:
+        'Building an autoencoder neural network from scratch - coming soon',
+      link: { href: 'https://github.com/darwin-kolisi', label: 'github.com' },
     },
   ];
 
@@ -109,23 +110,20 @@ export default function Home() {
   function Resume() {
     const resume: Array<Role> = [
       {
-        company: 'Witswatersrand AI Lab',
-        title: 'AI Agent Developer',
-        start: '2024',
-        end: {
-          label: '2025',
-          dateTime: new Date().getFullYear().toString(),
-        },
-      },
-      {
-        company: 'Collaborative Projects',
-        title: 'Frontend Developer',
-        start: '2024',
+        company: 'Personal Projects',
+        title: 'Full-Stack Developer',
+        start: '2025',
         end: 'present',
       },
       {
+        company: 'University of the Witwatersrand',
+        title: 'Computer Science Graduate',
+        start: '2022',
+        end: '2024',
+      },
+      {
         company: 'Academic Tutor',
-        title: 'Mathematics & Language Tutor',
+        title: 'Mathematics Tutor',
         start: '2021',
         end: '2022',
       },
@@ -152,12 +150,13 @@ export default function Home() {
         <div className="flex flex-col gap-16">
           <ToolsSection title="About">
             <Tool>
-              <p>Hey, I am darwin, an ML engineer from South Africa</p>
+              <p>
+                Hey, I am Darwin, a computer science graduate from South Africa
+              </p>
               <p className="mt-4">
-                Right now I am working in Johannesburg building a web app called
-                bucket. I spend my free time diving into ML and math stuff
-                because AI is pretty fascinating. Still figuring it all out, but
-                that is half the fun.
+                Right now I am building a web app called Bucket in Johannesburg.
+                I spend my free time diving into math, machine learning, and
+                operating systems, trying to figure out where to focus next.
               </p>
             </Tool>
           </ToolsSection>
@@ -178,7 +177,7 @@ export default function Home() {
                 </Card>
               ))}
             </div>
-            <Link href="http://github.com">
+            <Link href="https://github.com/darwin-kolisi">
               <div
                 aria-hidden="true"
                 className="relative z-10 mt-8 flex items-center text-sm font-semibold text-sky-700">
@@ -190,9 +189,9 @@ export default function Home() {
           <ToolsSection title="Contact">
             <Tool>
               <a
-                href="mailto:"
+                href="mailto: darwin.kolisi@gmail.com"
                 className="mt-2 text-sm font-semibold text-sky-700">
-                calcifer@email.me
+                darwin.kolisi@gmail.com
               </a>
             </Tool>
           </ToolsSection>
