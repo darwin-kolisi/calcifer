@@ -21,8 +21,8 @@ export default function Home() {
       name: 'Bucket',
       description: 'A personal web app for organizing and managing collections',
       link: {
-        href: 'https://bucket-zzro.onrender.com/',
-        label: 'bucket-zzro.onrender.com',
+        href: 'https://bucketpm.vercel.app',
+        label: 'bucketpm.vercel.app',
       },
     },
     {
