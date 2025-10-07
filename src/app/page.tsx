@@ -22,7 +22,7 @@ export default function Home() {
       description: 'A personal web app for organizing and managing collections',
       link: {
         href: 'https://bucketpm.vercel.app',
-        label: 'bucket-zzro.onrender.com',
+        label: 'bucketpm.vercel.app',
       },
     },
     {
