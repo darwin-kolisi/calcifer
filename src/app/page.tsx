@@ -3,6 +3,8 @@ import { ChevronRightIcon, BriefcaseIcon } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { Card } from '@/components/Card';
 import { Container } from '@/components/Container';
+import Image from 'next/image'
+import johannesburg from '@/images/johannesburg.png';
 
 export default function Home() {
   function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -19,17 +21,16 @@ export default function Home() {
   const projects = [
     {
       name: 'Bucket',
-      description: 'A personal web app for organizing and managing collections',
+      description: 'A personal web app for organizing and managing collections. Built with Next.js, Express, Prisma, PostgreSQL, and Docker.',
       link: {
-        href: 'https://bucketpm.vercel.app',
-        label: 'bucketpm.vercel.app',
+        href: 'https://bucket-coral.vercel.app',
+        label: 'bucket.app',
       },
     },
     {
-      name: 'Artificial Neural Network',
-      description:
-        'Building an autoencoder neural network from scratch - coming soon',
-      link: { href: 'https://github.com/darwin-kolisi', label: 'github.com' },
+      name: 'Campus Safety App',
+      description: 'A campus safety application built with a team to help students report and track safety incidents. Contributed to the frontend implementation.',
+      link: { href: 'https://github.com/JarrenD/SDProject-GroupC4', label: 'github.com' },
     },
   ];
 
@@ -116,16 +117,22 @@ export default function Home() {
         end: 'present',
       },
       {
+        company: 'BBD',
+        title: 'Full-Stack Developer',
+        start: { label: 'Dec 2025', dateTime: '2025-12-01' },
+        end: { label: 'Jan 2026', dateTime: '2026-01-31' },
+      },
+      {
         company: 'University of the Witwatersrand',
         title: 'Computer Science Graduate',
-        start: '2022',
-        end: '2024',
+        start: 'Jan 2022',
+        end: 'Dec 2024',
       },
       {
         company: 'Academic Tutor',
         title: 'Mathematics Tutor',
-        start: '2021',
-        end: '2022',
+        start: 'Jan 2021',
+        end: 'Dec 2021',
       },
     ];
 
@@ -151,13 +158,19 @@ export default function Home() {
           <ToolsSection title="About">
             <Tool>
               <p>
-                Hey, I am Darwin, a computer science graduate from South Africa
+                Hey, I'm Darwin, a computer science graduate at the University of the Witwatersrand.
               </p>
               <p className="mt-4">
-                Right now I am building a web app called Bucket in Johannesburg.
-                I spend my free time diving into math, machine learning, and
-                operating systems, trying to figure out where to focus next.
+                Currently buiding Bucket, a tool for organizing projects and
+                relearning C/C++ and exploring systems engineering.
               </p>
+              <Image
+                  src="/johannesburg.png"
+                  alt="Map of Johannesburg"
+                  className="mt-8 rounded-2xl"
+                  width={1200}
+                  height={800} 
+              />
             </Tool>
           </ToolsSection>
           <ToolsSection title="Projects">
@@ -165,7 +178,10 @@ export default function Home() {
               {projects.map((project) => (
                 <Card as="div" key={project.name}>
                   <h2 className="text-sm font-semibold text-zinc-800 dark:text-zinc-100">
-                    <Card.Link href={project.link.href}>
+                    <Card.Link 
+                      href={project.link.href}
+                      target="_blank"
+                      rel="noopener noreferrer">
                       {project.name}
                     </Card.Link>
                   </h2>
@@ -177,7 +193,10 @@ export default function Home() {
                 </Card>
               ))}
             </div>
-            <Link href="https://github.com/darwin-kolisi">
+            <Link 
+              href="https://github.com/darwin-kolisi"
+              target="_blank"
+              rel="noopener noreferrer">
               <div
                 aria-hidden="true"
                 className="relative z-10 mt-8 flex items-center text-sm font-semibold text-sky-700">

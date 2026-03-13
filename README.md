@@ -1,3 +1,3 @@
-# Darwin's Portfolio
+# Personal Portfolio
 
-A personal portfolio website showcasing my work as a computer science graduate and full-stack developer.
+Built with Next.js. Source code for my personal portfolio site at https://darwinml.vercel.app.
