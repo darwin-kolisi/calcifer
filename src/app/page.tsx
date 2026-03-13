@@ -3,8 +3,7 @@ import { ChevronRightIcon, BriefcaseIcon } from 'lucide-react';
 import { Section } from '@/components/Section';
 import { Card } from '@/components/Card';
 import { Container } from '@/components/Container';
-import Image from 'next/image'
-import johannesburg from '@/images/johannesburg.png';
+import Image from 'next/image';
 
 export default function Home() {
   function LinkIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
@@ -158,7 +157,7 @@ export default function Home() {
           <ToolsSection title="About">
             <Tool>
               <p>
-                Hey, I'm Darwin, a computer science graduate at the University of the Witwatersrand.
+                Hey, I&apos;m Darwin, a computer science graduate at the University of the Witwatersrand.
               </p>
               <p className="mt-4">
                 Currently buiding Bucket, a tool for organizing projects and
