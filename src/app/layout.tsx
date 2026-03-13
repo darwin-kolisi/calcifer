@@ -6,7 +6,7 @@ import { Providers } from './providers';
 export const metadata: Metadata = {
   title: 'darwin',
   description: 'created by darwin',
-  icons: { icon: '/cat.jpeg' },
+  icons: { icon: '/icon.png' },
 };
 
 export default function RootLayout({

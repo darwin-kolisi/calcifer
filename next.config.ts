@@ -1,7 +1,11 @@
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, webpack }) => {
+    if (process.env.TURBOPACK) {
+      return config;
+    }
+
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
@@ -11,6 +15,9 @@ const nextConfig: NextConfig = {
       };
     }
     return config;
+  },
+  turbopack: {
+    resolveAlias: {},
   },
 };
 
